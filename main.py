@@ -1,6 +1,7 @@
-from usuario import Usuario
-from estudiante import Estudiante
-from profesor import Profesor
+from curso import *
+from estudiante import *
+from profesor import *
+
 
 Menu = """
 \n Menu Principal 
@@ -205,3 +206,32 @@ def alta_profesor(mail:str):
     anio_egreso = int(input("Ingrese el año de egreso: "))
     nuevo_profe = Profesor(nombre, apellido, mail, password, titulo, anio_egreso)
     lista_profesores.append(nuevo_profe)
+    
+# Mustra los cursos disponible en el sistema
+def ver_cursos(lista_cursos):
+    print("\n Cursos Disponibles ")
+
+    lista_cursos_ordenados = sorted(lista_cursos, key=lambda cursos: cursos.nombre)
+    for i, curso in enumerate(lista_cursos_ordenados, start=1):
+        print(f"{i} -", curso)
+    #return lista_cursos_ordenados
+
+
+# Muestra los alumno que estan registrado en el sistema    
+def ver_alumnos():
+    # Ordenar la lista de estudiantes por apellido
+    lista_estudiantes_ordenados = sorted(lista_estudiantes, key=lambda estudiante: estudiante.apellido)
+    print("\n Todos los Alumnos ")
+    for estudiante in lista_estudiantes_ordenados:
+        print(estudiante)
+   
+        
+# Muestra los profesores que estan registrado en el sistema    
+def ver_profesores():
+    # Ordenar la lista de profesores por apellido
+    lista_profesores_ordenados = sorted(lista_profesores, key=lambda profesor: profesor.apellido)
+    print("\n Todos los Profesor ")
+    for profesor in lista_profesores_ordenados:
+        print(profesor)
+
+menu_principal()
