@@ -18,3 +18,13 @@ class Curso:
     @contrasenia_matriculacion.setter
     def contrasenia_matriculacion(self, nueva_contrasenia_matriculacion:str):
         self.__contrasenia_matriculacion = nueva_contrasenia_matriculacion
+        
+    def __str__(self) -> str:
+        return f"Curso: {self.nombre}"
+    
+    
+curso1 = Curso("Programacion I", "programacion.123")
+curso2 = Curso("Estadistica", "estadistica.123")
+
+
+lista_cursos = [curso1, curso2]
