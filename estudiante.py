@@ -49,4 +49,9 @@ class Estudiante(Usuario):
         else:
             mensaje ="Contraseña incorrecta."
         return mensaje
-  
+
+nahuel = Estudiante("Nahuel","Gutierrez","na@123","123",5555,2023)
+juan = Estudiante("Juancito","Gonzalez","ju@123","123",3333,2022)
+pepe = Estudiante("Pepe","Gomez","pe@123","123",1111,2021)
+
+lista_estudiantes = [nahuel, juan, pepe]
