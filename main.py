@@ -2,7 +2,6 @@ from curso import *
 from estudiante import *
 from profesor import *
 
-
 Menu = """
 \n Menu Principal 
 1 - Ingresar como alumno
@@ -10,7 +9,6 @@ Menu = """
 3 - Informes
 4 - Salir 
 """
-
 # Menu principal
 def menu_principal():
     while True:
@@ -20,12 +18,12 @@ def menu_principal():
 
         if opcion == "1":
             email = input("Ingrese su email: ")
-            print("ingresar_como_alumno(email)")
+            ingresar_como_alumno(email)
         elif opcion == "2":
             email = input("Ingrese su email: ")            
-            print("ingresar_como_profesor(email)")
+            ingresar_como_profesor(email)
         elif opcion == "3":
-            print("informes()")
+            informes()
         elif opcion == "4":
             print("Saliendo del sistema....")
             break
@@ -49,10 +47,10 @@ def menu_alumno(estudiante):
         elif opcion == "2":
             ver_cursos_matriculados(estudiante)
         elif opcion == "3":
-            print("Volviendo al menú principal....")
+            print("Volviendo al menú principal.")
             break
         else:
-            print("Opción inválida.")
+            print("Opción inválida. Por favor, ingrese una opción válida.")
 
 
 # Menu para PROFESORES
@@ -65,9 +63,9 @@ def menu_profesor(profesor):
         print("3 - Volver al menú principal")
         opcion = input("Ingrese su opción: ")
         if opcion == "1":
-            "dictar_curso(profesor)"
+            dictar_curso(profesor)
         elif opcion == "2":
-            "ver_cursos_dictados(profesor)"
+            ver_cursos_dictados(profesor)
         elif opcion == "3":
             print("Volviendo al menú principal.")
             break
@@ -86,17 +84,20 @@ def informes():
         opcion = input("Ingrese su opción: ")
 
         if opcion == "1":
-            "ver_cursos(lista_cursos)" # Imprime la lista de los cursos disponibles
+            ver_cursos(lista_cursos) # Imprime la lista de los cursos disponibles
         elif opcion == "2":
-            "ver_alumnos()" # Imprime la lista de los alumnos dados de alta
+            ver_alumnos() # Imprime la lista de los alumnos dados de alta
         elif opcion == "3":
-            "ver_profesores()" # Imprime a los profesores dados de alta
+            ver_profesores() # Imprime a los profesores dados de alta
         elif opcion == "4":
             print("Volviendo al menú principal.")
             break
         else:
             print("Opción inválida. Por favor, ingrese una opción válida.")
-            
+
+
+#############################################################################################################################
+#                                                       ALUMNOS
 
 # Funcion para que el alumno ingrese al sistema
 def ingresar_como_alumno(email): 
@@ -156,9 +157,11 @@ def alta_alumno(mail:str):
     fecha_inscripcion = fecha_actual.year
     nuevo_estudiante = Estudiante(nombre, apellido, mail, password, legajo, fecha_inscripcion)
     lista_estudiantes.append(nuevo_estudiante)
-    
-    
-    
+
+
+#############################################################################################################################
+#                                                       PROFESORES
+
 # Funcion para que el Profesor ingrese al sistema
 def ingresar_como_profesor(email):
     for profesor in lista_profesores:
@@ -206,7 +209,11 @@ def alta_profesor(mail:str):
     anio_egreso = int(input("Ingrese el año de egreso: "))
     nuevo_profe = Profesor(nombre, apellido, mail, password, titulo, anio_egreso)
     lista_profesores.append(nuevo_profe)
-    
+ 
+
+#############################################################################################################################
+#                                                       INFORMES
+
 # Mustra los cursos disponible en el sistema
 def ver_cursos(lista_cursos):
     print("\n Cursos Disponibles ")
