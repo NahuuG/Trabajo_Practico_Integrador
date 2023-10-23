@@ -22,6 +22,10 @@ class Curso:
     def __str__(self) -> str:
         return f"Curso: {self.nombre}"
     
+    @staticmethod
+    def generar_password(nombre) -> str:
+        nombre = nombre.title().replace(" ", "")
+        return nombre + ".123"
     
 curso1 = Curso("Programacion I", "programacion.123")
 curso2 = Curso("Estadistica", "estadistica.123")
