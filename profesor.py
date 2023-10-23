@@ -36,4 +36,14 @@ class Profesor(Usuario):
     \nNombre: {self.nombre}
     \nTítulo: {self.titulo}
     \nAño de egreso: {self.anio_egreso}"""
+    
+    def dictar_curso(self, curso: Curso) -> None:
+        print(f"El profesor {self.nombre} está dictando el curso: {curso.nombre}")
+   
+    
+
+profe1 = Profesor("Mercedes", "Viloni", "me@123", "me123", "Programadora", 2018)
+profe2 = Profesor("Juan", "Pepe", "pe@123", "pe123", "Ingeniero en sistema", 2019)
+
+lista_profesores = [profe1, profe2]
 
