@@ -1,3 +1,7 @@
+from usuario import Usuario
+from estudiante import Estudiante
+from profesor import Profesor
+
 Menu = """
 \n Menu Principal 
 1 - Ingresar como alumno
