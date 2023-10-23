@@ -155,3 +155,53 @@ def alta_alumno(mail:str):
     fecha_inscripcion = fecha_actual.year
     nuevo_estudiante = Estudiante(nombre, apellido, mail, password, legajo, fecha_inscripcion)
     lista_estudiantes.append(nuevo_estudiante)
+    
+    
+    
+# Funcion para que el Profesor ingrese al sistema
+def ingresar_como_profesor(email):
+    for profesor in lista_profesores:
+        if profesor.mail == email:
+            password = input("Ingrese su contraseña: ")
+            if Usuario.validar_credenciales(email, password):
+                menu_profesor(profesor)
+                return
+            else:
+                print("Contraseña incorrecta. Por favor, inténtelo de nuevo.")
+                return
+    confirmacion = input("No se encontró un profesor con ese email. ¿Desea darlo de alta en alumnado? (si/no): ").lower()
+    if confirmacion == "si":
+        profesor.alta_profesor(email)
+    else:
+        print("Operacion cancelada.")
+
+
+# Se encarga de dictar el curso que ingresa por sisteam y genera una contraseña
+def dictar_curso(profesor):
+    nombre_curso = input("Ingrese el nombre del curso a dictar: ")
+    contrasenia_matriculacion = Curso.generar_password(nombre_curso)
+    curso = Curso(nombre_curso, contrasenia_matriculacion)
+    lista_cursos.append(curso)
+    profesor.mi_cursos.append(curso)
+    print(f"¡Curso dado de alta con éxito!\nNombre: {nombre_curso}\nContraseña: {contrasenia_matriculacion}")
+
+
+# Muetra los cursos que el profesor puede dictar
+def ver_cursos_dictados(profesor):
+    if not profesor.mi_cursos:
+        print("No dictas ningún curso aún.")
+    else:
+        print("\n Cursos Dictados ")
+        for i, curso in enumerate(profesor.mi_cursos, start=1):
+            print(f"{i}. {curso.nombre}\nContraseña de Matriculación: {curso.contrasenia_matriculacion}")
+    
+            
+# Se encarga de dar de alta a un profesor en el sistema
+def alta_profesor(mail:str):
+    nombre = input("Ingrese el nombre: ")
+    apellido = input("Ingrese el apellido: ")
+    titulo = input("Ingrese el titulo: ")
+    password = input("Ingrese la contraseña: ")
+    anio_egreso = int(input("Ingrese el año de egreso: "))
+    nuevo_profe = Profesor(nombre, apellido, mail, password, titulo, anio_egreso)
+    lista_profesores.append(nuevo_profe)
