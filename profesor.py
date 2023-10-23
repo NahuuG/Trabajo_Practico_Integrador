@@ -1,4 +1,7 @@
 from usuario import Usuario
+from curso import Curso
+
+from usuario import Usuario
 
 class Profesor(Usuario):
     def __init__(self, nombre: str, apellido: str, mail: str, password: str, titulo: str, anio_egreso: int) -> None:
@@ -27,3 +30,10 @@ class Profesor(Usuario):
     @anio_egreso.setter
     def anio_egreso(self, nuevo_anio_egreso: int):
         self.__anio_egreso = nuevo_anio_egreso
+                
+    def __str__(self) -> str:
+        return f"""
+    \nNombre: {self.nombre}
+    \nTítulo: {self.titulo}
+    \nAño de egreso: {self.anio_egreso}"""
+
