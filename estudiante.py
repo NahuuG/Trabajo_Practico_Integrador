@@ -1,5 +1,6 @@
 from usuario import Usuario
-
+from curso import Curso
+import datetime 
 
 class Estudiante(Usuario):
     def __init__(self, nombre: str, apellido: str, mail: str, password: str, legajo: int, anio_inscripcion_carrera: int) -> None:
@@ -29,3 +30,23 @@ class Estudiante(Usuario):
     @anio_inscripcion_carrera.setter
     def anio_inscripcion_carrera(self, nuevo_anio_inscripcion: int):
         self.__anio_inscripcion_carrera = nuevo_anio_inscripcion
+        
+        
+    def __str__(self) -> str:
+        return f"""
+    \nNombre: {self.nombre}
+    \nLegajo: {self.legajo}
+    \nAño de inscripcion: {self.anio_inscripcion_carrera}"""
+
+    def matricularse_al_curso(self, curso: Curso, contrasenia: str) -> bool:
+
+        if contrasenia == curso.contrasenia_matriculacion:
+                if curso not in self.__mi_cursos:
+                    self.__mi_cursos.append(curso)
+                    mensaje = f"Matriculado con éxito en: {curso.nombre}."                    
+                else:
+                    mensaje = f"Ya estás matriculado en: {curso.nombre}."                    
+        else:
+            mensaje ="Contraseña incorrecta."
+        return mensaje
+  
