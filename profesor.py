@@ -34,6 +34,7 @@ class Profesor(Usuario):
     def __str__(self) -> str:
         return f"""
     \nNombre: {self.nombre}
+    \nApellido: {self.apellido}
     \nTítulo: {self.titulo}
     \nAño de egreso: {self.anio_egreso}"""
     

@@ -35,6 +35,7 @@ class Estudiante(Usuario):
     def __str__(self) -> str:
         return f"""
     \nNombre: {self.nombre}
+    \nApellido : {self.apellido}
     \nLegajo: {self.legajo}
     \nAño de inscripcion: {self.anio_inscripcion_carrera}"""
 
