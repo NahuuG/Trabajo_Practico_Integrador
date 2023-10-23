@@ -40,3 +40,16 @@ class Usuario(ABC):
     @password.setter
     def password(self, nuevo_password: str):
         self.__password = nuevo_password
+        
+    @abstractmethod
+    def __str__(self) -> str:
+        raise NotImplementedError
+    
+    usuarios_registrados = []
+    
+    @staticmethod
+    def validar_credenciales(mail: str, password: str) -> bool:
+        for usuario in Usuario.usuarios_registrados:
+            if usuario["mail"] == mail and usuario["password"] == password:
+                return True
+        return False
